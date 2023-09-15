@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-    .nav-link {
-        @apply text-black;
-    }
-    .nav-link:hover {
-        @apply border-b-orange-600;
-    }
+:root {
+    font-family: 'Poppins', sans-serif;
 }

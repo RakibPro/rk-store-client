@@ -5,17 +5,17 @@ import { Link } from 'react-router-dom';
 function Navbar() {
     const menuItems = (
         <>
-            <li className='nav-link'>
+            <li>
                 <Link to='/'>Home</Link>
             </li>
-            <li className='nav-link'>
-                <Link to='/'>Home</Link>
+            <li>
+                <Link to='/'>Inventory</Link>
             </li>
-            <li className='nav-link'>
-                <Link to='/'>About</Link>
+            <li>
+                <Link to='/'>Manage Inventory</Link>
             </li>
-            <li className='nav-link'>
-                <Link to='/'>Contact Me</Link>
+            <li>
+                <Link to='/'>Blogs</Link>
             </li>
         </>
     );
@@ -41,7 +41,7 @@ function Navbar() {
                     </label>
                     <ul
                         tabIndex={0}
-                        className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-60'
+                        className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-60  uppercase font-medium'
                     >
                         {menuItems}
                     </ul>
@@ -57,11 +57,13 @@ function Navbar() {
                 </Link>
             </div>
             <div className='navbar-center hidden lg:flex'>
-                <ul className='menu menu-horizontal px-1'>{menuItems}</ul>
+                <ul className='menu menu-horizontal px-1 uppercase font-medium'>
+                    {menuItems}
+                </ul>
             </div>
             <div className='navbar-end'>
-                <Link to='/' className='btn'>
-                    Button
+                <Link to='/' className='btn btn-sm'>
+                    Login
                 </Link>
             </div>
         </div>
