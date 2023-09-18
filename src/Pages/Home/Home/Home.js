@@ -1,10 +1,10 @@
 import React from 'react';
-import HomeBanner from '../HomeBanner/HomeBanner';
+import Banner from '../Banner/Banner';
 
 function Home() {
     return (
         <div>
-            <HomeBanner />
+            <Banner />
         </div>
     );
 }

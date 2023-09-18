@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from '../../../Assets/Images/logo.png';
 import { Link } from 'react-router-dom';
+import PrimaryButton from '../../../Components/Buttons/PrimaryButton/PrimaryButton';
 
 function Navbar() {
     const menuItems = (
@@ -20,7 +21,7 @@ function Navbar() {
         </>
     );
     return (
-        <div className='navbar'>
+        <div className='navbar py-0'>
             <div className='navbar-start'>
                 <div className='dropdown'>
                     <label tabIndex={0} className='btn btn-ghost lg:hidden'>
@@ -57,13 +58,13 @@ function Navbar() {
                 </Link>
             </div>
             <div className='navbar-center hidden lg:flex'>
-                <ul className='menu menu-horizontal px-1 uppercase font-medium'>
+                <ul className='menu menu-horizontal px-1 uppercase font-bold'>
                     {menuItems}
                 </ul>
             </div>
             <div className='navbar-end'>
-                <Link to='/' className='btn btn-sm'>
-                    Login
+                <Link to='/' className=''>
+                    <PrimaryButton>Login</PrimaryButton>
                 </Link>
             </div>
         </div>
