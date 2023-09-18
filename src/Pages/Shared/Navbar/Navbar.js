@@ -7,16 +7,36 @@ function Navbar() {
     const menuItems = (
         <>
             <li>
-                <Link to='/'>Home</Link>
+                <Link
+                    className='hover:bg-transparent hover:text-[#3bb77e] transition duration-300'
+                    to='/'
+                >
+                    Home
+                </Link>
             </li>
             <li>
-                <Link to='/'>Inventory</Link>
+                <Link
+                    className='hover:bg-transparent hover:text-[#3bb77e] transition duration-300'
+                    to='/'
+                >
+                    Inventory
+                </Link>
             </li>
             <li>
-                <Link to='/'>Manage Inventory</Link>
+                <Link
+                    className='hover:bg-transparent hover:text-[#3bb77e] transition duration-300'
+                    to='/'
+                >
+                    Manage Inventory
+                </Link>
             </li>
             <li>
-                <Link to='/'>Blogs</Link>
+                <Link
+                    className='hover:bg-transparent hover:text-[#3bb77e] transition duration-300'
+                    to='/'
+                >
+                    Blogs
+                </Link>
             </li>
         </>
     );
@@ -58,7 +78,7 @@ function Navbar() {
                 </Link>
             </div>
             <div className='navbar-center hidden lg:flex'>
-                <ul className='menu menu-horizontal px-1 uppercase font-bold'>
+                <ul className='menu menu-horizontal px-1 uppercase font-bold text-[#253d4e]'>
                     {menuItems}
                 </ul>
             </div>

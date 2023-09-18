@@ -3,5 +3,9 @@
 @tailwind utilities;
 
 :root {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Quicksand', sans-serif;
+}
+::selection {
+    color: white;
+    background: #3bb77e;
 }
