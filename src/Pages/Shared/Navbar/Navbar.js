@@ -84,7 +84,7 @@ function Navbar() {
                     </ul>
                 </div>
                 <div className='navbar-end'>
-                    <Link to='/' className=''>
+                    <Link to='/login' className=''>
                         <PrimaryButton>Login</PrimaryButton>
                     </Link>
                 </div>
