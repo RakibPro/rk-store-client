@@ -5,6 +5,7 @@
 :root {
     font-family: 'Quicksand', sans-serif;
 }
+
 ::selection {
     color: white;
     background: #3bb77e;

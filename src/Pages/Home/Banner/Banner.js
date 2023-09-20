@@ -6,6 +6,7 @@ import Banner4 from '../../../Assets/Images/BannerImage/Banner4.jpg';
 import Banner5 from '../../../Assets/Images/BannerImage/Banner5.jpg';
 import Banner6 from '../../../Assets/Images/BannerImage/Banner6.jpg';
 import PrimaryButton from '../../../Components/Buttons/PrimaryButton/PrimaryButton';
+import { motion } from 'framer-motion';
 
 function Banner() {
     const [currentImage, setCurrentImage] = useState(0);
@@ -31,7 +32,23 @@ function Banner() {
         >
             <div className='hero-overlay bg-black bg-opacity-60'></div>
             <div className='hero-content text-center text-white'>
-                <div className='max-w-3xl'>
+                <motion.div
+                    initial={{
+                        scale: 0.5,
+                        opacity: 0,
+                    }}
+                    whileInView={{
+                        scale: 1,
+                        opacity: 1,
+                    }}
+                    transition={{
+                        duration: 1.2,
+                        type: 'spring',
+                        stiffness: 100,
+                    }}
+                    viewport={{ once: true }}
+                    className='max-w-3xl'
+                >
                     <h1 className='mb-5 text-7xl font-bold tracking-wide '>
                         Organic Grocery
                     </h1>
@@ -43,7 +60,7 @@ function Banner() {
                         your community's produce.
                     </p>
                     <PrimaryButton>Explore</PrimaryButton>
-                </div>
+                </motion.div>
             </div>
         </div>
     );

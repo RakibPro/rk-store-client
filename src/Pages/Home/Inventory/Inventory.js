@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const Inventory = () => {
     return (
@@ -15,11 +16,27 @@ const Inventory = () => {
                 Incidunt, voluptates.
             </p>
             <div className='grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-10 mt-5 mx-10'>
-                <div className='card w-full bg-white-500 rounded-xl shadow-lg hover:shadow-2xl hover:duration-300'>
+                <motion.div
+                    initial={{
+                        y: 200,
+                        opacity: 0,
+                    }}
+                    whileInView={{
+                        opacity: 1,
+                        y: 0,
+                    }}
+                    transition={{
+                        duration: 1.2,
+                    }}
+                    viewport={{ once: true }}
+                    className='card w-full h-[500px] bg-white-500 rounded-xl shadow-[0_0_30px_rgba(0,0,0,.14)] hover:shadow-[0_30px_50px_rgba(0,0,0,.14)] hover:duration-500'
+                >
                     <figure>
-                        <img
+                        <motion.img
+                            whileHover={{ scale: 1.2 }}
                             src='https://themepanthers.com/wp/nest/d1/wp-content/uploads/2022/02/product-2-1.jpg'
                             alt='Shoes'
+                            className='h-[200px] w-[200px] lg:h-[250px] lg:w-[250px]'
                         />
                     </figure>
                     <div className='card-body'>
@@ -29,7 +46,7 @@ const Inventory = () => {
                                 All Natural Style Chicken Meatballs
                             </h2>
                             {/* Product Description  */}
-                            <p className='font-medium text-start my-1'>
+                            <p className='font-medium text-start my-2'>
                                 Lorem ipsum dolor sit amet consectetur
                                 adipisicing elit. Odio, nobis!
                             </p>
@@ -41,7 +58,7 @@ const Inventory = () => {
                                 </span>
                             </p>
                             {/* Product Quantity */}
-                            <p className='font-semibold my-1 text-start mb-0'>
+                            <p className='font-semibold mt-2 text-start mb-0'>
                                 item{' '}
                                 <span className='text-lg font-semibold text-[#3bb77e]'>
                                     5
@@ -62,7 +79,7 @@ const Inventory = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </div>
     );
