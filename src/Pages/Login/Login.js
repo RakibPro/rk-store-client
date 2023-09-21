@@ -12,13 +12,13 @@ const Login = () => {
                 <div className='lg:w-3/5 bg-white text-black rounded-tl-2xl rounded-tr-2xl lg:rounded-tr-none lg:rounded-bl-2xl p-12'>
                     {/* Title */}
                     <h2 className='text-3xl font-bold text-[#3bb77e]'>
-                        Login To Your Account
+                        Login To RK-Store
                     </h2>
                     <div className='border-2 border-[#3bb77e] w-20 rounded-lg inline-block mt-4 mb-2'></div>
                     {/* Login Form */}
                     <div className='flex flex-col items-center'>
                         <p className='text-left font-semibold pb-4 w-72 text-[#253d4e]'>
-                            Login using email address
+                            Use your email to login
                         </p>
                         {/* Email Field */}
                         <div className='bg-gray-100 w-72 p-2 flex items-center mb-3 rounded-sm'>
@@ -31,7 +31,7 @@ const Login = () => {
                         </div>
                         {/* Password Field */}
                         <div className='bg-gray-100 w-72 p-2 flex items-center mb-3 rounded-sm'>
-                            <MdLockOutline className='text-gray-400 text-xl m-1 mr-2' />
+                            <MdLockOutline className='text-gray-400 text-2xl m-[2px] mr-2' />
                             <input
                                 type='password'
                                 placeholder='Password'
@@ -77,13 +77,14 @@ const Login = () => {
                 </div>
                 {/* SignUp Section */}
                 <div className='lg:w-2/5 bg-[#3bb77e] text-white rounded-bl-2xl lg:rounded-bl-none lg:rounded-tr-2xl rounded-br-2xl p-12 lg:pt-28'>
-                    <h2 className='text-3xl font-bold mb-1'>
-                        Welcome To <br /> RK-Store
-                    </h2>
+                    <h2 className='text-3xl font-bold mb-1'>Hello Sir</h2>
                     <div className='border-2 border-white w-14 rounded-lg inline-block'></div>
                     <p className='my-2 font-medium'>
-                        If you are new to this site,
-                        <br /> SignUp and start a new journey with us.
+                        If you are new to this site
+                        <br />
+                        Enter your personal details and
+                        <br />
+                        start a new journey with us
                     </p>
                     <Link
                         to='/signup'
