@@ -24,7 +24,7 @@ function Banner() {
     });
 
     return (
-        <div
+        <section
             className='hero min-h-[500px] bg-cover bg-center bg-no-repeat transition-all duration-500'
             style={{
                 backgroundImage: `url(${bannerImages[currentImage]})`,
@@ -62,7 +62,7 @@ function Banner() {
                     <PrimaryButton>Explore</PrimaryButton>
                 </motion.div>
             </div>
-        </div>
+        </section>
     );
 }
 

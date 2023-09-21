@@ -41,7 +41,7 @@ function Navbar() {
         </>
     );
     return (
-        <div className='mx-5'>
+        <nav className='mx-5'>
             <div className='navbar py-0 max-w-[1440px] mx-auto'>
                 <div className='navbar-start '>
                     <div className='dropdown'>
@@ -89,7 +89,7 @@ function Navbar() {
                     </Link>
                 </div>
             </div>
-        </div>
+        </nav>
     );
 }
 
