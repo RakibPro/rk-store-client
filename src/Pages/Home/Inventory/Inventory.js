@@ -29,7 +29,7 @@ const Inventory = () => {
                         duration: 1.2,
                     }}
                     viewport={{ once: true }}
-                    className='card w-full h-[500px] bg-white-500 rounded-xl shadow-[0_0_30px_rgba(0,0,0,.14)] hover:shadow-[0_30px_50px_rgba(0,0,0,.14)] hover:duration-500'
+                    className='card w-full h-[500px] bg-white-500 rounded-xl shadow-[0_0_30px_rgba(0,0,0,.14)] hover:shadow-[0_30px_50px_rgba(0,0,0,.14)] transition-all hover:duration-500'
                 >
                     <figure>
                         <motion.img
@@ -53,7 +53,7 @@ const Inventory = () => {
                             {/* Supplier Name */}
                             <p className='font-semibold text-start'>
                                 By{' '}
-                                <span className='font-semibold text-[#3bb77e] hover:text-red-500 cursor-pointer transition duration-300'>
+                                <span className='font-semibold text-[#3bb77e] hover:text-red-500 cursor-pointer transition-all duration-300'>
                                     Supplier Name
                                 </span>
                             </p>

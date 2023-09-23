@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '../../../Assets/Images/logo.png';
 import { Link } from 'react-router-dom';
 import PrimaryButton from '../../../Components/Buttons/PrimaryButton/PrimaryButton';
+import { AuthContext } from '../../../context/AuthProvider';
 
 function Navbar() {
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                // Sign-out successful.
+            })
+            .catch((error) => {
+                // An error happened.
+                console.error(error);
+            });
+    };
+
     const menuItems = (
         <>
             <li>
@@ -84,9 +98,19 @@ function Navbar() {
                     </ul>
                 </div>
                 <div className='navbar-end'>
-                    <Link to='/login' className=''>
-                        <PrimaryButton>Login</PrimaryButton>
-                    </Link>
+                    {user?.uid ? (
+                        <button
+                            onClick={handleLogOut}
+                            className='btn btn-sm md:btn-md text-white border-none tracking-widest
+                            font-bold bg-red-500 hover:bg-[#fdc040] hover:text-black transition-all duration-300'
+                        >
+                            SignOut
+                        </button>
+                    ) : (
+                        <Link to='/login' className=''>
+                            <PrimaryButton>Login</PrimaryButton>
+                        </Link>
+                    )}
                 </div>
             </div>
         </nav>

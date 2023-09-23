@@ -93,7 +93,7 @@ const Login = () => {
                         <div className='flex w-72 my-1'>
                             <Link
                                 to='/login'
-                                className='text-sm font-medium text-black hover:text-red-500'
+                                className='text-sm font-medium text-black transition-all hover:text-red-500 '
                             >
                                 Forgot Password?
                             </Link>
@@ -101,7 +101,7 @@ const Login = () => {
                         <input
                             type='submit'
                             value='Login'
-                            className='border-2 border-[#3bb77e]  text-[#3bb77e] mt-2 rounded-full px-14 py-2 font-semibold hover:bg-[#3bb77e] hover:text-white duration-300 cursor-pointer'
+                            className='border-2 border-[#3bb77e]  text-[#3bb77e] mt-2 rounded-full px-14 py-2 font-semibold hover:bg-[#3bb77e] hover:text-white transition-all duration-300 cursor-pointer'
                         />
                     </div>
                     {/* Social Login */}
@@ -109,19 +109,19 @@ const Login = () => {
                     <div className='flex justify-center my-2'>
                         <Link
                             to='/login'
-                            className='border-2 border-gray-200 rounded-full p-3 mx-1 text-xl hover:bg-[#3bb77e] hover:text-white hover:border-[#3bb77e] duration-300'
+                            className='border-2 border-gray-200 rounded-full p-3 mx-1 text-xl hover:bg-[#3bb77e] hover:text-white hover:border-[#3bb77e] transition-all duration-300'
                         >
                             <FaFacebookF />
                         </Link>
                         <Link
                             to='/login'
-                            className='border-2 border-gray-200 rounded-full p-3 mx-1 text-xl hover:bg-[#3bb77e] hover:text-white hover:border-[#3bb77e] duration-300'
+                            className='border-2 border-gray-200 rounded-full p-3 mx-1 text-xl hover:bg-[#3bb77e] hover:text-white hover:border-[#3bb77e] transition-all duration-300'
                         >
                             <FaGoogle />
                         </Link>
                         <Link
                             to='/login'
-                            className='border-2 border-gray-200 rounded-full p-3 mx-1 text-xl hover:bg-[#3bb77e] hover:text-white hover:border-[#3bb77e] duration-300'
+                            className='border-2 border-gray-200 rounded-full p-3 mx-1 text-xl hover:bg-[#3bb77e] hover:text-white hover:border-[#3bb77e] transition-all duration-300'
                         >
                             <FaGithub />
                         </Link>
@@ -141,7 +141,7 @@ const Login = () => {
                     </p>
                     <Link
                         to='/signup'
-                        className='border-2 border-white mt-2 inline-block rounded-full px-12 py-2 font-semibold hover:bg-white hover:text-[#3bb77e] duration-300'
+                        className='border-2 border-white mt-2 inline-block rounded-full px-12 py-2 font-semibold hover:bg-white hover:text-[#3bb77e] transition-all duration-300'
                     >
                         SignUp
                     </Link>
