@@ -17,7 +17,7 @@ function Navbar() {
             <li>
                 <Link
                     className='hover:bg-transparent hover:text-[#3bb77e] transition duration-300'
-                    to='/'
+                    to='/inventory'
                 >
                     Inventory
                 </Link>

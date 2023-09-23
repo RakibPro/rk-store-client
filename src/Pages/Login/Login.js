@@ -1,15 +1,39 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FaFacebookF, FaGoogle, FaGithub, FaRegEnvelope } from 'react-icons/fa';
 import { MdLockOutline } from 'react-icons/md';
+import { useForm } from 'react-hook-form';
+import { AuthContext } from '../../context/AuthProvider';
+import toast from 'react-hot-toast';
 
 const Login = () => {
+    const {
+        register,
+        formState: { errors },
+        handleSubmit,
+    } = useForm();
+    const { loginUser } = useContext(AuthContext);
+
+    const handleLogin = (data, e) => {
+        console.log(data);
+        loginUser(data.email, data.password)
+            .then((result) => {
+                const user = result.user;
+                toast.success('Login Success');
+            })
+            .catch((error) => {
+                toast.error(error.message);
+            });
+    };
     return (
         <section className='min-h-screen flex items-center bg-gray-100 justify-center w-full flex-1 px-10 pt-10 lg:pt-0 text-center'>
             {/* Wrapper */}
             <div className='rounded-2xl shadow-2xl flex lg:w-2/3 flex-col lg:flex-row '>
                 {/* Login Section */}
-                <div className='lg:w-3/5 bg-white text-black rounded-tl-2xl rounded-tr-2xl lg:rounded-tr-none lg:rounded-bl-2xl p-12'>
+                <form
+                    onSubmit={handleSubmit(handleLogin)}
+                    className='lg:w-3/5 bg-white text-black rounded-tl-2xl rounded-tr-2xl lg:rounded-tr-none lg:rounded-bl-2xl p-12'
+                >
                     {/* Title */}
                     <h2 className='text-3xl font-bold text-[#3bb77e]'>
                         Login To RK-Store
@@ -27,8 +51,20 @@ const Login = () => {
                                 type='email'
                                 placeholder='Email'
                                 className='bg-gray-100 outline-none flex-1'
+                                {...register('email', {
+                                    required:
+                                        'Please Enter Your Email Address !',
+                                })}
                             />
                         </div>
+                        {errors.email && (
+                            <p
+                                role='alert'
+                                className='text-error text-left font-medium pb-3 w-72'
+                            >
+                                {errors.email?.message}
+                            </p>
+                        )}
                         {/* Password Field */}
                         <div className='bg-gray-100 w-72 p-2 flex items-center mb-3 rounded-sm'>
                             <MdLockOutline className='text-gray-400 text-2xl m-[2px] mr-2' />
@@ -36,8 +72,24 @@ const Login = () => {
                                 type='password'
                                 placeholder='Password'
                                 className='bg-gray-100 outline-none flex-1'
+                                {...register('password', {
+                                    required: 'Please Enter Password !',
+                                    minLength: {
+                                        value: 6,
+                                        message:
+                                            'Password must be 6 character or longer',
+                                    },
+                                })}
                             />
                         </div>
+                        {errors.password && (
+                            <p
+                                role='alert'
+                                className='text-error text-left font-medium pb-3 w-72'
+                            >
+                                {errors.password?.message}
+                            </p>
+                        )}
                         <div className='flex w-72 my-1'>
                             <Link
                                 to='/login'
@@ -74,9 +126,10 @@ const Login = () => {
                             <FaGithub />
                         </Link>
                     </div>
-                </div>
+                </form>
+
                 {/* SignUp Section */}
-                <div className='lg:w-2/5 bg-[#3bb77e] text-white rounded-bl-2xl lg:rounded-bl-none lg:rounded-tr-2xl rounded-br-2xl p-12 lg:pt-28'>
+                <div className='lg:w-2/5 bg-[#3bb77e] text-white rounded-bl-2xl lg:rounded-bl-none lg:rounded-tr-2xl rounded-br-2xl p-12 lg:pt-36'>
                     <h2 className='text-3xl font-bold mb-1'>Hello Sir</h2>
                     <div className='border-2 border-white w-14 rounded-lg inline-block'></div>
                     <p className='my-2 font-medium'>
