@@ -47,7 +47,7 @@ function Banner() {
                         stiffness: 100,
                     }}
                     viewport={{ once: true }}
-                    className='max-w-3xl'
+                    className='max-w-3xl transition-all ease-out duration-500'
                 >
                     <h1 className='mb-5 text-7xl font-bold tracking-wide '>
                         Organic Grocery

@@ -4,6 +4,8 @@ import Home from '../../Pages/Home/Home/Home';
 import Login from '../../Pages/Login/Login';
 import SignUp from '../../Pages/SignUp/SignUp';
 import Inventory from '../../Pages/Home/Inventory/Inventory';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import NotFound from '../../Pages/Shared/NotFound/NotFound';
 
 export const router = createBrowserRouter([
     {
@@ -25,8 +27,16 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/inventory',
-                element: <Inventory />,
+                element: (
+                    <PrivateRoute>
+                        <Inventory />
+                    </PrivateRoute>
+                ),
             },
         ],
+    },
+    {
+        path: '*',
+        element: <NotFound />,
     },
 ]);

@@ -29,7 +29,7 @@ const Inventory = () => {
                         duration: 1.2,
                     }}
                     viewport={{ once: true }}
-                    className='card w-full h-[500px] bg-white-500 rounded-xl shadow-[0_0_30px_rgba(0,0,0,.14)] hover:shadow-[0_30px_50px_rgba(0,0,0,.14)] transition-all hover:duration-500'
+                    className='card w-full h-[500px] bg-white-500 rounded-xl shadow-[0_0_30px_rgba(0,0,0,.14)] hover:shadow-[0_30px_50px_rgba(0,0,0,.14)] transition-all ease-out hover:duration-500'
                 >
                     <figure>
                         <motion.img
