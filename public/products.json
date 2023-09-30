@@ -1,0 +1,93 @@
+[
+    {
+        "name": "Natural Sweet rice",
+        "description": "Naturally sweet, versatile rice – perfect for sweet and savory dishes, elevating every meal.",
+        "img": "https://i.ibb.co/16cXz3b/rice.jpg",
+        "price": "5",
+        "quantity": "400",
+        "supplierName": "Olivia Sullivan",
+        "sold": "163"
+    },
+    {
+        "name": "Montra Organic Chana Dal",
+        "description": "Montra Organic Chana Dal: Nutrient-rich, sustainably sourced, and pure flavor in every wholesome, protein-packed bite.",
+        "img": "https://i.ibb.co/ykCY4fD/dal.jpg",
+        "price": "9",
+        "quantity": "350",
+        "supplierName": "Ethan Mitchell",
+        "sold": "195"
+    },
+    {
+        "name": "Cavanagh Free Range Eggs 6pcs",
+        "description": "Cavanagh Free Range Eggs: Fresh, ethical, and delicious eggs from happy, healthy hens. Nature's best!",
+        "img": "https://i.ibb.co/cbQpnNC/egg.jpg",
+        "price": "1",
+        "quantity": "550",
+        "supplierName": "Ava Rodriguez",
+        "sold": "257"
+    },
+    {
+        "name": "Arla Lacto Free Semi Skimmed Milk",
+        "description": "Lactose-free goodness: Arla Lacto-Free Semi-Skimmed Milk. Creamy, nutritious, and perfect for your daily dairy needs.",
+        "img": "https://i.ibb.co/JCNRCY9/milk.png",
+        "price": "7",
+        "quantity": "600",
+        "supplierName": "Liam Anderson",
+        "sold": "382"
+    },
+    {
+        "name": "Organic Fuji Apples",
+        "description": "Juicy, crisp Organic Fuji Apples, a wholesome burst of orchard-fresh flavor in every crunchy bite.",
+        "img": "https://i.ibb.co/fHvzFcb/apple.jpg",
+        "price": "15",
+        "quantity": "900",
+        "supplierName": "Mia Foster",
+        "sold": "584"
+    },
+    {
+        "name": "Chocolate Chip Cookie",
+        "description": "Irresistible, freshly baked Chocolate Chip Cookies: Perfectly sweet, gooey, and loaded with rich, melty chocolate chips.",
+        "img": "https://i.ibb.co/TmdH0Yq/cookies.png",
+        "price": "3",
+        "quantity": "700",
+        "supplierName": "Noah Parker",
+        "sold": "529"
+    },
+    {
+        "name": "Chobani Complete Vanilla Greek Yogurt",
+        "description": "Chobani Complete: Creamy, protein-packed vanilla Greek yogurt, your daily boost of nutrition and indulgence combined.",
+        "img": "https://i.ibb.co/Fw9BKG1/vanilla-yogurt.jpg",
+        "price": "5",
+        "quantity": "300",
+        "supplierName": "Sophia Bennett",
+        "sold": "158"
+    },
+    {
+        "name": "Evolution Fresh Water Melon 500ml",
+        "description": "Evolution Fresh Watermelon: Refreshing, hydrating, and bursting with natural sweetness. Taste the pure essence of summer.",
+        "img": "https://i.ibb.co/xXv398w/watermelon-juice.jpg",
+        "price": "4",
+        "quantity": "500",
+        "supplierName": "Jackson Adams",
+        "sold": "371"
+    },
+    {
+        "name": "Coca Cola",
+        "description": "Coca-Cola: The timeless, fizzy classic that refreshes, uplifts, and brings people together with its iconic taste.",
+        "img": "https://i.ibb.co/hsZm6cp/coca-cola.jpg",
+        "price": "1",
+        "quantity": "700",
+        "supplierName": "Emma Hayes",
+        "sold": "519"
+    },
+
+    {
+        "name": "Kern’s Strawberry Nectar",
+        "description": "Kern's Strawberry Nectar: Sweet, luscious, and bursting with real strawberry goodness in every sip. Irresistible refreshment!",
+        "img": "https://i.ibb.co/47tdJsW/strawberry-drink.jpg",
+        "price": "2",
+        "quantity": "600",
+        "supplierName": "Aiden Turner",
+        "sold": "463"
+    }
+]

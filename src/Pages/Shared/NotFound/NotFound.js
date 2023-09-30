@@ -24,7 +24,7 @@ const NotFound = () => {
                     alt='404 Error'
                     className='max-w-xs mx-auto transition-all ease-out'
                 />
-                <h1 className='text-5xl font-bold my-3 text-[#253d4e'>
+                <h1 className='text-5xl font-bold my-3 text-[#253d4e]'>
                     Page Not Found
                 </h1>
                 <p className='mb-5 font-medium text-gray-500'>

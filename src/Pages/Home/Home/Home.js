@@ -1,12 +1,12 @@
 import React from 'react';
 import Banner from '../Banner/Banner';
-import Inventory from '../Inventory/Inventory';
+import HomeInventories from '../HomeInventory/HomeInventory';
 
 function Home() {
     return (
-        <div className='max-w-[1440px] mx-auto '>
+        <div>
             <Banner />
-            <Inventory />
+            <HomeInventories />
         </div>
     );
 }
