@@ -39,7 +39,7 @@ function Navbar() {
             <li>
                 <Link
                     className='hover:bg-transparent hover:text-[#3bb77e] transition duration-300'
-                    to='/'
+                    to='/manageinventory'
                 >
                     Manage Inventory
                 </Link>
@@ -55,7 +55,7 @@ function Navbar() {
         </>
     );
     return (
-        <nav className='mx-5'>
+        <nav className='lg:px-5'>
             <div className='navbar py-0 max-w-[1440px] mx-auto'>
                 <div className='navbar-start '>
                     <div className='dropdown'>
@@ -101,7 +101,7 @@ function Navbar() {
                     {user?.uid ? (
                         <button
                             onClick={handleLogOut}
-                            className='btn btn-sm md:btn-md text-white border-none tracking-widest
+                            className='btn text-white border-none tracking-widest
                             font-bold bg-red-500 hover:bg-[#fdc040] hover:text-black transition-all duration-300'
                         >
                             SignOut

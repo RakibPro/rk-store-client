@@ -7,6 +7,7 @@ import Inventory from '../../Pages/Inventory/Inventory';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import NotFound from '../../Pages/Shared/NotFound/NotFound';
 import InventoryDetails from '../../Pages/Inventory/InventoryDetails';
+import ManageInventory from '../../Pages/ManageInventory/ManageInventory';
 
 export const router = createBrowserRouter([
     {
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
                 ),
                 loader: ({ params }) =>
                     fetch(`http://localhost:5000/inventory/${params.id}`),
+            },
+            {
+                path: '/manageinventory',
+                element: <ManageInventory />,
             },
         ],
     },

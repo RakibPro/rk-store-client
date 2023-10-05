@@ -4,7 +4,6 @@ import PrimaryButton from '../../Components/Buttons/PrimaryButton/PrimaryButton'
 import { Link } from 'react-router-dom';
 
 const InventoryCard = ({ product }) => {
-    console.log(product);
     const { _id, name, description, img, price, quantity, supplierName } =
         product;
 
@@ -31,7 +30,7 @@ const InventoryCard = ({ product }) => {
                         duration: 0.5,
                     }}
                     src={img}
-                    alt='Shoes'
+                    alt='product'
                     className='h-[250px] w-[250px]'
                 />
             </figure>
@@ -50,10 +49,10 @@ const InventoryCard = ({ product }) => {
                     </p>
                     {/* Product Quantity */}
                     <p className='font-semibold mt-2 text-start mb-0'>
-                        in stock{' '}
                         <span className='text-lg font-semibold text-[#3bb77e]'>
                             {quantity}
-                        </span>
+                        </span>{' '}
+                        in stock
                     </p>
                 </div>
                 <div className='card-actions justify-between mt-0'>
@@ -63,9 +62,9 @@ const InventoryCard = ({ product }) => {
                             Price ${price}
                         </p>
                     </div>
-                    <PrimaryButton>
-                        <Link to={`/inventory/${_id}`}>Update</Link>
-                    </PrimaryButton>
+                    <Link to={`/inventory/${_id}`}>
+                        <PrimaryButton>Update</PrimaryButton>
+                    </Link>
                 </div>
             </div>
         </motion.div>
