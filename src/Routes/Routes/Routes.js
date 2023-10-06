@@ -8,6 +8,7 @@ import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import NotFound from '../../Pages/Shared/NotFound/NotFound';
 import InventoryDetails from '../../Pages/Inventory/InventoryDetails';
 import ManageInventory from '../../Pages/ManageInventory/ManageInventory';
+import AddNewItem from '../../Pages/AddNewItem/AddNewItem';
 
 export const router = createBrowserRouter([
     {
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
             {
                 path: '/manageinventory',
                 element: <ManageInventory />,
+            },
+            {
+                path: '/addnewitem',
+                element: <AddNewItem />,
             },
         ],
     },

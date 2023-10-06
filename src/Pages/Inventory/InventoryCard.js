@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 const InventoryCard = ({ product }) => {
     const { _id, name, description, img, price, quantity, supplierName } =
         product;
+    console.log(product);
 
     return (
         <motion.div

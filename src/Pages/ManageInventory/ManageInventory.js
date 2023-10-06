@@ -55,12 +55,12 @@ const ManageInventory = () => {
 
     return (
         <section className='m-10'>
-            <h2 className='text-2xl text-black font-bold mb-6'>
-                Manage Doctors
+            <h2 className='text-3xl text-[#253d4e] font-bold mb-6'>
+                Manage Inventory
             </h2>
             <div className='overflow-x-auto rounded-lg'>
                 <table className='table w-full'>
-                    <thead className='bg-[#E6E6E6] text-black uppercase'>
+                    <thead className='bg-[#E6E6E6] text-[#253d4e] uppercase'>
                         <tr>
                             <th>No.</th>
                             <th>Image</th>
@@ -73,7 +73,10 @@ const ManageInventory = () => {
                     </thead>
                     <tbody className='bg-white'>
                         {products?.map((product, i) => (
-                            <tr key={product._id} className='hover'>
+                            <tr
+                                key={product._id}
+                                className='hover transition-all duration-200'
+                            >
                                 <th>{i + 1}</th>
                                 <td>
                                     <div className='avatar'>

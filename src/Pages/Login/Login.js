@@ -38,6 +38,8 @@ const Login = () => {
             .then((result) => {
                 // The signed-in user info.
                 const user = result.user;
+                navigate(from, { replace: true });
+                toast.success('Login Success');
             })
             .catch((error) => {
                 // Handle Errors here.
@@ -54,6 +56,8 @@ const Login = () => {
             .then((result) => {
                 // The signed-in user info.
                 const user = result.user;
+                navigate(from, { replace: true });
+                toast.success('Login Success');
             })
             .catch((error) => {
                 // Handle Errors here.
@@ -70,6 +74,8 @@ const Login = () => {
             .then((result) => {
                 // The signed-in user info.
                 const user = result.user;
+                navigate(from, { replace: true });
+                toast.success('Login Success');
             })
             .catch((error) => {
                 // Handle Errors here.
@@ -83,7 +89,7 @@ const Login = () => {
     return (
         <section className='min-h-screen flex items-center bg-gray-100 justify-center w-full flex-1 px-10 pt-10 lg:pt-0 text-center'>
             {/* Wrapper */}
-            <div className='flex rounded-2xl shadow-2xl lg:w-2/3 flex-col lg:flex-row '>
+            <div className='flex rounded-2xl shadow-2xl lg:w-2/3 flex-col lg:flex-row'>
                 {/* Login Section */}
                 <div className='lg:w-3/5 bg-white text-black rounded-tl-2xl rounded-tr-2xl lg:rounded-tr-none lg:rounded-bl-2xl p-12'>
                     <form onSubmit={handleSubmit(handleLogin)}>
@@ -91,6 +97,7 @@ const Login = () => {
                         <h2 className='text-3xl font-bold text-[#3bb77e]'>
                             Login To RK-Store
                         </h2>
+                        {/* Title Underline */}
                         <div className='border-2 border-[#3bb77e] w-20 rounded-lg inline-block mt-4 mb-2'></div>
                         {/* Login Form */}
                         <div className='flex flex-col items-center'>

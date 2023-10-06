@@ -36,14 +36,26 @@ function Navbar() {
                     Inventory
                 </Link>
             </li>
-            <li>
-                <Link
-                    className='hover:bg-transparent hover:text-[#3bb77e] transition duration-300'
-                    to='/manageinventory'
-                >
-                    Manage Inventory
-                </Link>
-            </li>
+            {user?.uid && (
+                <>
+                    <li>
+                        <Link
+                            className='hover:bg-transparent hover:text-[#3bb77e] transition duration-300'
+                            to='/manageinventory'
+                        >
+                            Manage Inventory
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            className='hover:bg-transparent hover:text-[#3bb77e] transition duration-300'
+                            to='/addnewitem'
+                        >
+                            Add New Item
+                        </Link>
+                    </li>
+                </>
+            )}
             <li>
                 <Link
                     className='hover:bg-transparent hover:text-[#3bb77e] transition duration-300'

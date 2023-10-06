@@ -39,6 +39,7 @@ const SignUp = () => {
             .then((result) => {
                 // The signed-in user info.
                 const user = result.user;
+                toast.success('Login Success');
             })
             .catch((error) => {
                 // Handle Errors here.
@@ -55,6 +56,7 @@ const SignUp = () => {
             .then((result) => {
                 // The signed-in user info.
                 const user = result.user;
+                toast.success('Login Success');
             })
             .catch((error) => {
                 // Handle Errors here.
@@ -71,6 +73,7 @@ const SignUp = () => {
             .then((result) => {
                 // The signed-in user info.
                 const user = result.user;
+                toast.success('Login Success');
             })
             .catch((error) => {
                 // Handle Errors here.
