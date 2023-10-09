@@ -1,11 +1,41 @@
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
 
 const InventoryDetails = () => {
     const { _id, name, description, img, price, quantity, supplierName, sold } =
         useLoaderData();
+    const [productQuantity, setProductQuantity] = useState(quantity);
+    const [productSold, setProductSold] = useState(sold);
 
-    const handleDelivered = async () => {};
+    const handleDelivered = async () => {
+        if (productQuantity > 0) {
+            setProductQuantity(productQuantity - 1);
+            setProductSold(productSold + 1);
+
+            const url = `http://localhost:5000/inventory/${_id}`;
+            const requestBody = JSON.stringify({
+                productQuantity: productQuantity - 1,
+                productSold: productSold + 1,
+            });
+
+            fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: requestBody,
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data.modifiedCount > 0) {
+                        toast.success(`${name} Is Delivered`);
+                    } else {
+                        toast.error('No item left');
+                    }
+                });
+        }
+    };
     return (
         <section>
             <div className='flex flex-col lg:flex-row m-10'>
@@ -24,7 +54,13 @@ const InventoryDetails = () => {
                     <p className='mb-3'>{description}</p>
                     <p className='font-semibold mt-2 text-center md:text-start'>
                         <span className='text-lg font-semibold text-[#3bb77e]'>
-                            {quantity}
+                            {productQuantity ? (
+                                productQuantity
+                            ) : (
+                                <span className='text-lg font-semibold text-red-500'>
+                                    No item
+                                </span>
+                            )}
                         </span>{' '}
                         in stock
                     </p>
@@ -35,10 +71,16 @@ const InventoryDetails = () => {
                         </span>
                     </p>
                     <p className='font-semibold text-center md:text-start'>
-                        <span className='text-lg font-semibold text-[#3bb77e]'>
-                            {sold}
-                        </span>{' '}
-                        Sold
+                        {productSold ? (
+                            <>
+                                <span className='text-lg font-semibold text-[#3bb77e]'>
+                                    {productSold}
+                                </span>{' '}
+                                Sold
+                            </>
+                        ) : (
+                            <>Not sold yet</>
+                        )}
                     </p>
 
                     <button

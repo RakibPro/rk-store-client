@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 const InventoryCard = ({ product }) => {
     const { _id, name, description, img, price, quantity, supplierName } =
         product;
-    console.log(product);
 
     return (
         <motion.div
@@ -51,7 +50,13 @@ const InventoryCard = ({ product }) => {
                     {/* Product Quantity */}
                     <p className='font-semibold mt-2 text-start mb-0'>
                         <span className='text-lg font-semibold text-[#3bb77e]'>
-                            {quantity}
+                            {quantity ? (
+                                quantity
+                            ) : (
+                                <span className='text-lg font-semibold text-red-500'>
+                                    No item
+                                </span>
+                            )}
                         </span>{' '}
                         in stock
                     </p>
