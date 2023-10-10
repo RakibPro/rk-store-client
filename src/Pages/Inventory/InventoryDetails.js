@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { motion } from 'framer-motion';
 
 const InventoryDetails = () => {
     const { _id, name, description, img, price, quantity, supplierName, sold } =
@@ -75,19 +76,45 @@ const InventoryDetails = () => {
                     }
                 });
         } else {
-            toast.error('Please input positive number');
+            toast.error('Input Positive Value');
         }
     };
 
     return (
         <section>
             <div className='flex flex-col lg:flex-row m-10'>
-                <img
+                <motion.img
+                    initial={{
+                        x: -200,
+                        opacity: 0,
+                    }}
+                    whileInView={{
+                        opacity: 1,
+                        x: 0,
+                    }}
+                    transition={{
+                        duration: 1.2,
+                    }}
+                    viewport={{ once: true }}
                     src={img}
                     alt='product'
                     className='border rounded-lg md:w-[400px] lg:w-[500px] mx-auto lg:mx-0'
                 />
-                <div className='lg:ml-20 mt-10 text-center lg:text-start'>
+                <motion.div
+                    initial={{
+                        x: 200,
+                        opacity: 0,
+                    }}
+                    whileInView={{
+                        opacity: 1,
+                        x: 0,
+                    }}
+                    transition={{
+                        duration: 1.2,
+                    }}
+                    viewport={{ once: true }}
+                    className='lg:ml-20 mt-10 text-center lg:text-start'
+                >
                     <h2 className='text-4xl font-bold'>{name}</h2>
                     <p className='text-2xl text-[#3bb77e] font-semibold my-3'>
                         Price ${price}
@@ -174,7 +201,7 @@ const InventoryDetails = () => {
                             )}
                         </form>
                     )}
-                </div>
+                </motion.div>
             </div>
         </section>
     );

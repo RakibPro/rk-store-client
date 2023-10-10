@@ -31,9 +31,9 @@ const NotFound = () => {
                     The page you're looking for might be renamed, removed or
                     temporarily unavailable
                 </p>
-                <PrimaryButton>
-                    <Link to={'/'}>Go to home</Link>
-                </PrimaryButton>
+                <Link to={'/'}>
+                    <PrimaryButton>Go to home</PrimaryButton>
+                </Link>
             </motion.div>
         </div>
     );

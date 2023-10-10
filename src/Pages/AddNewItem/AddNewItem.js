@@ -13,39 +13,46 @@ const AddNewItem = () => {
     const imageHostKey = process.env.REACT_APP_IMGBB_KEY;
 
     const handleAddNewItem = (data) => {
+        console.log(data);
         const image = data.image[0];
         const formData = new FormData();
         formData.append('image', image);
 
-        const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`;
-        fetch(url, {
-            method: 'POST',
-            body: formData,
-        })
-            .then((res) => res.json())
-            .then((imgData) => {
-                if (imgData.success) {
-                    const product = {
-                        name: data.name,
-                        price: parseInt(data.price),
-                        quantity: parseInt(data.quantity),
-                        description: data.description,
-                        img: imgData.data.url,
-                    };
-                    // send products information to database
-                    fetch('http://localhost:5000/inventory', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(product),
-                    })
-                        .then((res) => res.json())
-                        .then((result) => {
-                            toast.success(`${data.name} added successfully`);
-                        });
-                }
-            });
+        if (data.price > 0 && data.quantity > 0) {
+            const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`;
+            fetch(url, {
+                method: 'POST',
+                body: formData,
+            })
+                .then((res) => res.json())
+                .then((imgData) => {
+                    if (imgData.success) {
+                        const product = {
+                            name: data.name,
+                            price: parseInt(data.price),
+                            quantity: parseInt(data.quantity),
+                            description: data.description,
+                            img: imgData.data.url,
+                        };
+                        // send products information to database
+                        fetch('http://localhost:5000/inventory', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(product),
+                        })
+                            .then((res) => res.json())
+                            .then((result) => {
+                                toast.success(
+                                    `${data.name} added successfully`
+                                );
+                            });
+                    }
+                });
+        } else {
+            toast.error('Input Positive Value');
+        }
     };
 
     return (

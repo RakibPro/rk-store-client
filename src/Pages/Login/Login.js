@@ -36,12 +36,14 @@ const Login = () => {
     const handleFacebookLogin = () => {
         loginWithFacebook()
             .then((result) => {
+                console.log(result);
                 // The signed-in user info.
                 const user = result.user;
                 navigate(from, { replace: true });
                 toast.success('Login Success');
             })
             .catch((error) => {
+                console.error(error);
                 // Handle Errors here.
                 const errorCode = error.code;
                 const errorMessage = error.message;
