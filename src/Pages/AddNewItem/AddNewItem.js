@@ -27,8 +27,8 @@ const AddNewItem = () => {
                 if (imgData.success) {
                     const product = {
                         name: data.name,
-                        price: data.price,
-                        quantity: data.quantity,
+                        price: parseInt(data.price),
+                        quantity: parseInt(data.quantity),
                         description: data.description,
                         img: imgData.data.url,
                     };
@@ -81,7 +81,7 @@ const AddNewItem = () => {
                         {/* Price Field */}
                         <div className='form-control w-full mb-5'>
                             <input
-                                type='text'
+                                type='number'
                                 placeholder='Price'
                                 className='input input-bordered font-medium w-full'
                                 {...register('price', {
@@ -100,7 +100,7 @@ const AddNewItem = () => {
                         {/* Quantity Field */}
                         <div className='form-control w-full mb-5'>
                             <input
-                                type='text'
+                                type='number'
                                 placeholder='Quantity'
                                 className='input input-bordered font-medium w-full'
                                 {...register('quantity', {

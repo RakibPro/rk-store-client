@@ -85,7 +85,7 @@ const SignUp = () => {
     };
 
     return (
-        <section className='min-h-screen flex items-center bg-gray-100 justify-center w-full flex-1 px-10 pt-10 lg:pt-0 text-center'>
+        <section className='min-h-screen flex items-center bg-gray-100 justify-center w-full flex-1 px-10 py-10 lg:py-0 text-center'>
             {/* Wrapper */}
             <div className='rounded-2xl shadow-2xl flex lg:w-2/3 flex-col lg:flex-row '>
                 {/* Login Section */}
