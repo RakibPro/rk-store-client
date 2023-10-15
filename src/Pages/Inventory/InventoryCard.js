@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import PrimaryButton from '../../Components/Buttons/PrimaryButton/PrimaryButton';
 import { Link } from 'react-router-dom';
@@ -6,6 +6,13 @@ import { Link } from 'react-router-dom';
 const InventoryCard = ({ product }) => {
     const { _id, name, description, img, price, quantity, supplierName } =
         product;
+
+    const [showFullDescription, setShowFullDescription] = useState(false);
+    const shortDescription = description.substring(0, 110);
+
+    const toggleDescription = () => {
+        setShowFullDescription(!showFullDescription);
+    };
 
     return (
         <motion.div
@@ -39,9 +46,35 @@ const InventoryCard = ({ product }) => {
                     {/* Product Name */}
                     <h2 className='card-title text-start'>{name}</h2>
                     {/* Product Description  */}
-                    <p className='font-medium text-start my-2'>{description}</p>
+                    <div>
+                        {showFullDescription ? (
+                            <p className='font-medium text-start my-2'>
+                                {description}{' '}
+                                <button
+                                    onClick={toggleDescription}
+                                    className='text-red-500 hover:underline'
+                                >
+                                    {showFullDescription
+                                        ? 'See Less'
+                                        : 'See More'}
+                                </button>
+                            </p>
+                        ) : (
+                            <p className='font-medium text-start my-2'>
+                                {shortDescription}...{' '}
+                                <button
+                                    onClick={toggleDescription}
+                                    className='text-[#3bb77e] hover:underline'
+                                >
+                                    {showFullDescription
+                                        ? 'See Less'
+                                        : 'See More'}
+                                </button>
+                            </p>
+                        )}
+                    </div>
                     {/* Supplier Name */}
-                    <p className='font-semibold text-start'>
+                    <p className='font-semibold text-start '>
                         By{' '}
                         <span className='font-semibold text-[#3bb77e] hover:text-red-500 cursor-pointer transition-all duration-300'>
                             {supplierName}
