@@ -3,6 +3,7 @@ import toast from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const InventoryDetails = () => {
     const { _id, name, description, img, price, quantity, supplierName, sold } =
@@ -10,6 +11,8 @@ const InventoryDetails = () => {
     const [productQuantity, setProductQuantity] = useState(quantity);
     const [productSold, setProductSold] = useState(sold);
     const [showForm, setShowForm] = useState(false);
+
+    const [axiosSecure] = useAxiosSecure();
 
     const {
         register,
@@ -23,24 +26,24 @@ const InventoryDetails = () => {
             setProductQuantity(productQuantity - 1);
             setProductSold(productSold + 1);
 
-            const url = `http://localhost:5000/inventory/${_id}`;
-            const requestBody = JSON.stringify({
+            const requestBody = {
                 productQuantity: productQuantity - 1,
                 productSold: productSold + 1,
-            });
+            };
 
-            fetch(url, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: requestBody,
-            })
-                .then((res) => res.json())
-                .then((data) => {
-                    if (data.modifiedCount > 0) {
+            axiosSecure
+                .put(`http://localhost:5000/inventory/${_id}`, requestBody, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+                .then((response) => {
+                    if (response.data.modifiedCount > 0) {
                         toast.success(`${name} Is Delivered`);
                     }
+                })
+                .catch((error) => {
+                    // Handle error here
                 });
         }
     };
@@ -56,24 +59,27 @@ const InventoryDetails = () => {
             const addedQuantity = parseInt(data.quantity);
             setProductQuantity(productQuantity + addedQuantity);
 
-            const url = `http://localhost:5000/inventory/${_id}`;
             const requestBody = JSON.stringify({
                 productQuantity: productQuantity + addedQuantity,
+                productSold: productSold,
             });
 
-            fetch(url, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: requestBody,
-            })
-                .then((res) => res.json())
+            axiosSecure
+                .put(`http://localhost:5000/inventory/${_id}`, requestBody, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+                .then((response) => {
+                    return response.data;
+                })
                 .then((data) => {
-                    console.log(data);
                     if (data.modifiedCount > 0) {
                         toast.success(`${addedQuantity} ${name} Is Added`);
                     }
+                })
+                .catch((error) => {
+                    // Handle error here
                 });
         } else {
             toast.error('Input Positive Value');

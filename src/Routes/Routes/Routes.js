@@ -44,11 +44,19 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/manageinventory',
-                element: <ManageInventory />,
+                element: (
+                    <PrivateRoute>
+                        <ManageInventory />
+                    </PrivateRoute>
+                ),
             },
             {
                 path: '/addnewitem',
-                element: <AddNewItem />,
+                element: (
+                    <PrivateRoute>
+                        <AddNewItem />
+                    </PrivateRoute>
+                ),
             },
         ],
     },

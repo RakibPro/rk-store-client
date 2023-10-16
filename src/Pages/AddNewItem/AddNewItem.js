@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const AddNewItem = () => {
     // get data using reactHookForm
@@ -9,18 +10,16 @@ const AddNewItem = () => {
         formState: { errors },
         handleSubmit,
     } = useForm();
-
     const imageHostKey = process.env.REACT_APP_IMGBB_KEY;
+    const [axiosSecure] = useAxiosSecure();
 
     const handleAddNewItem = (data) => {
-        console.log(data);
         const image = data.image[0];
         const formData = new FormData();
         formData.append('image', image);
 
         if (data.price > 0 && data.quantity > 0) {
-            const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`;
-            fetch(url, {
+            fetch(`https://api.imgbb.com/1/upload?key=${imageHostKey}`, {
                 method: 'POST',
                 body: formData,
             })
@@ -35,18 +34,19 @@ const AddNewItem = () => {
                             img: imgData.data.url,
                         };
                         // send products information to database
-                        fetch('http://localhost:5000/inventory', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify(product),
-                        })
-                            .then((res) => res.json())
-                            .then((result) => {
+                        axiosSecure
+                            .post('http://localhost:5000/inventory', product, {
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                            })
+                            .then((response) => {
                                 toast.success(
-                                    `${data.name} added successfully`
+                                    `${response.data.name} added successfully`
                                 );
+                            })
+                            .catch((error) => {
+                                console.error('Axios Error:', error);
                             });
                     }
                 });

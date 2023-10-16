@@ -2,8 +2,11 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import Loading from '../Shared/Loading/Loading';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const ManageInventory = () => {
+    const [axiosSecure] = useAxiosSecure();
+
     const {
         data: products,
         isLoading,
@@ -12,9 +15,8 @@ const ManageInventory = () => {
         queryKey: ['products'],
         queryFn: async () => {
             try {
-                const res = await fetch('http://localhost:5000/inventory');
-                const data = await res.json();
-                return data;
+                const res = await axiosSecure('/inventory');
+                return res.data;
             } catch (error) {}
         },
     });
@@ -30,13 +32,10 @@ const ManageInventory = () => {
             confirmButtonText: 'Delete',
         }).then((result) => {
             if (result.isConfirmed) {
-                const url = `http://localhost:5000/inventory/${id}`;
-                fetch(url, {
-                    method: 'DELETE',
-                })
-                    .then((res) => res.json())
-                    .then((data) => {
-                        if (data.deletedCount > 0) {
+                axiosSecure
+                    .delete(`http://localhost:5000/inventory/${id}`)
+                    .then((response) => {
+                        if (response.data.deletedCount > 0) {
                             Swal.fire(
                                 'Deleted Successfully',
                                 `${name} has been deleted.`,
@@ -44,6 +43,9 @@ const ManageInventory = () => {
                             );
                             refetch();
                         }
+                    })
+                    .catch((error) => {
+                        console.error('Axios Error:', error);
                     });
             }
         });
