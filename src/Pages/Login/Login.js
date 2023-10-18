@@ -44,6 +44,7 @@ const Login = () => {
     const handleFacebookLogin = () => {
         loginWithFacebook()
             .then((result) => {
+                console.log(result);
                 // The signed-in user info.
                 const user = result.user;
                 navigate(from, { replace: true });

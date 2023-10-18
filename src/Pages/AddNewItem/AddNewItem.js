@@ -35,14 +35,18 @@ const AddNewItem = () => {
                         };
                         // send products information to database
                         axiosSecure
-                            .post('http://localhost:5000/inventory', product, {
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                },
-                            })
+                            .post(
+                                'https://rk-store-server.vercel.app/inventory',
+                                product,
+                                {
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                }
+                            )
                             .then((response) => {
                                 toast.success(
-                                    `${response.data.name} added successfully`
+                                    `${data.name} added successfully`
                                 );
                             })
                             .catch((error) => {

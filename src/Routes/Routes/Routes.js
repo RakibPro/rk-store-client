@@ -40,7 +40,9 @@ export const router = createBrowserRouter([
                     </PrivateRoute>
                 ),
                 loader: ({ params }) =>
-                    fetch(`http://localhost:5000/inventory/${params.id}`),
+                    fetch(
+                        `https://rk-store-server.vercel.app/inventory/${params.id}`
+                    ),
             },
             {
                 path: '/manageinventory',

@@ -9,7 +9,8 @@ const InventoryDetails = () => {
     const { _id, name, description, img, price, quantity, supplierName, sold } =
         useLoaderData();
     const [productQuantity, setProductQuantity] = useState(quantity);
-    const [productSold, setProductSold] = useState(sold);
+    const initialSold = sold !== undefined ? sold : 0;
+    const [productSold, setProductSold] = useState(initialSold);
     const [showForm, setShowForm] = useState(false);
 
     const [axiosSecure] = useAxiosSecure();
@@ -30,13 +31,16 @@ const InventoryDetails = () => {
                 productQuantity: productQuantity - 1,
                 productSold: productSold + 1,
             };
-
             axiosSecure
-                .put(`http://localhost:5000/inventory/${_id}`, requestBody, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                })
+                .put(
+                    `https://rk-store-server.vercel.app/inventory/${_id}`,
+                    requestBody,
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    }
+                )
                 .then((response) => {
                     if (response.data.modifiedCount > 0) {
                         toast.success(`${name} Is Delivered`);
@@ -65,11 +69,15 @@ const InventoryDetails = () => {
             });
 
             axiosSecure
-                .put(`http://localhost:5000/inventory/${_id}`, requestBody, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                })
+                .put(
+                    `https://rk-store-server.vercel.app/inventory/${_id}`,
+                    requestBody,
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    }
+                )
                 .then((response) => {
                     return response.data;
                 })

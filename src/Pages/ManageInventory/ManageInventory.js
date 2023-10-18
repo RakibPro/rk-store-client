@@ -33,7 +33,9 @@ const ManageInventory = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 axiosSecure
-                    .delete(`http://localhost:5000/inventory/${id}`)
+                    .delete(
+                        `https://rk-store-server.vercel.app/inventory/${id}`
+                    )
                     .then((response) => {
                         if (response.data.deletedCount > 0) {
                             Swal.fire(
