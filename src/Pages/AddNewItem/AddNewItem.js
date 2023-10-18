@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const AddNewItem = () => {
     // get data using reactHookForm

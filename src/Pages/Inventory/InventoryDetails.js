@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
-import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const InventoryDetails = () => {
     const { _id, name, description, img, price, quantity, supplierName, sold } =
@@ -12,7 +12,6 @@ const InventoryDetails = () => {
     const initialSold = sold !== undefined ? sold : 0;
     const [productSold, setProductSold] = useState(initialSold);
     const [showForm, setShowForm] = useState(false);
-
     const [axiosSecure] = useAxiosSecure();
 
     const {

@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import Loading from '../Shared/Loading/Loading';
 import Swal from 'sweetalert2';
-import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const ManageInventory = () => {
     const [axiosSecure] = useAxiosSecure();

@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '../Pages/Shared/Navbar/Navbar';
-import { Outlet } from 'react-router-dom';
+import { Outlet, ScrollRestoration } from 'react-router-dom';
 import Footer from '../Pages/Shared/Footer/Footer';
 
 function MainLayout() {
@@ -9,6 +9,7 @@ function MainLayout() {
             <Navbar />
             <Outlet />
             <Footer />
+            <ScrollRestoration />
         </main>
     );
 }
