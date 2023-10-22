@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
     FaFacebookF,
     FaGoogle,
@@ -26,14 +26,16 @@ const SignUp = () => {
         loginWithGoogle,
         loginWithGithub,
     } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleSignUp = (data) => {
         // Create User
         createUser(data.email, data.password)
             .then((result) => {
                 const user = result.user;
-                reset();
                 toast.success('User Created Successfully');
+                reset();
+                navigate('/');
             })
             .catch((error) => {
                 if (error.code === 'auth/email-already-in-use') {

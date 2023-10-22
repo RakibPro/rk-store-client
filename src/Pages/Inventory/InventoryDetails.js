@@ -17,6 +17,7 @@ const InventoryDetails = () => {
     const {
         register,
         formState: { errors },
+        reset,
         handleSubmit,
     } = useForm();
 
@@ -75,6 +76,7 @@ const InventoryDetails = () => {
                 .then((data) => {
                     if (data.modifiedCount > 0) {
                         toast.success(`${addedQuantity} ${name} Is Added`);
+                        reset();
                     }
                 })
                 .catch((error) => {
