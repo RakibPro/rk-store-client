@@ -20,7 +20,6 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    console.log(user);
 
     const googleProvider = new GoogleAuthProvider();
     const facebookProvider = new FacebookAuthProvider();
@@ -90,11 +89,10 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
-            console.log(currentUser);
             // get and set token
             if (currentUser) {
                 axios
-                    .post('http://localhost:5000/jwt', {
+                    .post('https://rk-store-server.vercel.app/jwt', {
                         email: currentUser.email,
                     })
                     .then((data) => {

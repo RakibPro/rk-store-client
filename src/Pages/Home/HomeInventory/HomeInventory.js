@@ -10,7 +10,9 @@ const Inventories = () => {
         queryKey: ['products'],
         queryFn: async () => {
             try {
-                const res = await fetch('http://localhost:5000/inventory');
+                const res = await fetch(
+                    'https://rk-store-server.vercel.app/inventory'
+                );
                 const data = await res.json();
                 return data;
             } catch (error) {}
