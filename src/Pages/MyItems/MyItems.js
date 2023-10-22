@@ -17,7 +17,7 @@ const ManageInventory = () => {
         queryKey: ['products'],
         queryFn: async () => {
             try {
-                const res = await axiosSecure(`/inventory`);
+                const res = await axiosSecure(`/myitems?email=${user?.email}`);
                 return res.data;
             } catch (error) {}
         },

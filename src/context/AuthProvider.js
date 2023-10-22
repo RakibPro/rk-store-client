@@ -1,13 +1,14 @@
 import React, { createContext, useEffect, useState } from 'react';
 import {
-    FacebookAuthProvider,
-    GithubAuthProvider,
-    GoogleAuthProvider,
-    createUserWithEmailAndPassword,
     getAuth,
-    onAuthStateChanged,
+    createUserWithEmailAndPassword,
+    updateProfile,
     signInWithEmailAndPassword,
+    FacebookAuthProvider,
+    GoogleAuthProvider,
+    GithubAuthProvider,
     signInWithPopup,
+    onAuthStateChanged,
     signOut,
 } from 'firebase/auth';
 import app from '../firebase/firebase.config';
@@ -19,6 +20,7 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    console.log(user);
 
     const googleProvider = new GoogleAuthProvider();
     const facebookProvider = new FacebookAuthProvider();
@@ -30,6 +32,30 @@ const AuthProvider = ({ children }) => {
         return createUserWithEmailAndPassword(auth, email, password);
     };
 
+    // Update User
+    const updateUser = (userInfo) => {
+        return new Promise((resolve, reject) => {
+            const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+                if (currentUser) {
+                    updateProfile(currentUser, userInfo)
+                        .then(() => {
+                            // Profile update was successful
+                            unsubscribe();
+                            setLoading(false);
+                            resolve();
+                        })
+                        .catch((error) => {
+                            // Handle the error
+                            unsubscribe();
+                            console.error('Error updating profile:', error);
+                            setLoading(false);
+                            reject(error);
+                        });
+                }
+            });
+        });
+    };
+
     // Login User
     const loginUser = (email, password) => {
         setLoading(true);
@@ -38,16 +64,19 @@ const AuthProvider = ({ children }) => {
 
     // Login With Facebook
     const loginWithFacebook = () => {
+        setLoading(true);
         return signInWithPopup(auth, facebookProvider);
     };
 
     // Login With Google
     const loginWithGoogle = () => {
+        setLoading(true);
         return signInWithPopup(auth, googleProvider);
     };
 
     // Login With Github
     const loginWithGithub = () => {
+        setLoading(true);
         return signInWithPopup(auth, githubProvider);
     };
 
@@ -61,20 +90,26 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
-
+            console.log(currentUser);
             // get and set token
             if (currentUser) {
                 axios
-                    .post('https://rk-store-server.vercel.app/jwt', {
+                    .post('http://localhost:5000/jwt', {
                         email: currentUser.email,
                     })
                     .then((data) => {
                         localStorage.setItem('access-token', data.data.token);
+                    })
+                    .catch((error) => {
+                        console.error('Error while fetching token:', error);
+                    })
+                    .finally(() => {
+                        setLoading(false);
                     });
             } else {
                 localStorage.removeItem('access-token');
+                setLoading(false);
             }
-            setLoading(false);
         });
 
         return () => unsubscribe();
@@ -82,6 +117,7 @@ const AuthProvider = ({ children }) => {
 
     const authInfo = {
         createUser,
+        updateUser,
         loginUser,
         loginWithFacebook,
         loginWithGoogle,

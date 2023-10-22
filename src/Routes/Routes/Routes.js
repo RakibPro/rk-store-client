@@ -8,6 +8,7 @@ import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import NotFound from '../../Pages/Shared/NotFound/NotFound';
 import InventoryDetails from '../../Pages/Inventory/InventoryDetails';
 import ManageInventory from '../../Pages/ManageInventory/ManageInventory';
+import MyItems from '../../Pages/MyItems/MyItems';
 import AddNewItem from '../../Pages/AddNewItem/AddNewItem';
 
 export const router = createBrowserRouter([
@@ -40,15 +41,21 @@ export const router = createBrowserRouter([
                     </PrivateRoute>
                 ),
                 loader: ({ params }) =>
-                    fetch(
-                        `https://rk-store-server.vercel.app/inventory/${params.id}`
-                    ),
+                    fetch(`http://localhost:5000/inventory/${params.id}`),
             },
             {
                 path: '/manageinventory',
                 element: (
                     <PrivateRoute>
                         <ManageInventory />
+                    </PrivateRoute>
+                ),
+            },
+            {
+                path: '/myitems',
+                element: (
+                    <PrivateRoute>
+                        <MyItems />
                     </PrivateRoute>
                 ),
             },

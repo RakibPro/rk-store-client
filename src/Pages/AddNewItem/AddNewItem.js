@@ -1,19 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
+import { AuthContext } from '../../context/AuthProvider';
 
 const AddNewItem = () => {
     // get data using reactHookForm
     const {
         register,
         formState: { errors },
+        reset,
         handleSubmit,
     } = useForm();
+    const { user } = useContext(AuthContext);
     const imageHostKey = process.env.REACT_APP_IMGBB_KEY;
     const [axiosSecure] = useAxiosSecure();
 
     const handleAddNewItem = (data) => {
+        const name = user?.displayName || 'unregistered';
+        const email = user?.email || 'unregistered';
         const image = data.image[0];
         const formData = new FormData();
         formData.append('image', image);
@@ -27,6 +32,8 @@ const AddNewItem = () => {
                 .then((imgData) => {
                     if (imgData.success) {
                         const product = {
+                            supplierName: name,
+                            email: email,
                             name: data.name,
                             price: parseInt(data.price),
                             quantity: parseInt(data.quantity),
@@ -35,19 +42,16 @@ const AddNewItem = () => {
                         };
                         // send products information to database
                         axiosSecure
-                            .post(
-                                'https://rk-store-server.vercel.app/inventory',
-                                product,
-                                {
-                                    headers: {
-                                        'Content-Type': 'application/json',
-                                    },
-                                }
-                            )
+                            .post('/inventory', product, {
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                            })
                             .then((response) => {
                                 toast.success(
                                     `${data.name} added successfully`
                                 );
+                                reset();
                             })
                             .catch((error) => {
                                 console.error('Axios Error:', error);

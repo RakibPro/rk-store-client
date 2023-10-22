@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import InventoryCard from '../../Inventory/InventoryCard';
 import { Link } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
@@ -10,9 +10,7 @@ const Inventories = () => {
         queryKey: ['products'],
         queryFn: async () => {
             try {
-                const res = await fetch(
-                    'https://rk-store-server.vercel.app/inventory'
-                );
+                const res = await fetch('http://localhost:5000/inventory');
                 const data = await res.json();
                 return data;
             } catch (error) {}

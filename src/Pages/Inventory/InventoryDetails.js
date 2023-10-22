@@ -31,15 +31,11 @@ const InventoryDetails = () => {
                 productSold: productSold + 1,
             };
             axiosSecure
-                .put(
-                    `https://rk-store-server.vercel.app/inventory/${_id}`,
-                    requestBody,
-                    {
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    }
-                )
+                .put(`/inventory/${_id}`, requestBody, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
                 .then((response) => {
                     if (response.data.modifiedCount > 0) {
                         toast.success(`${name} Is Delivered`);
@@ -68,15 +64,11 @@ const InventoryDetails = () => {
             });
 
             axiosSecure
-                .put(
-                    `https://rk-store-server.vercel.app/inventory/${_id}`,
-                    requestBody,
-                    {
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    }
-                )
+                .put(`/inventory/${_id}`, requestBody, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
                 .then((response) => {
                     return response.data;
                 })

@@ -16,21 +16,40 @@ const SignUp = () => {
     const {
         register,
         formState: { errors },
+        reset,
         handleSubmit,
     } = useForm();
-    const { createUser, loginWithFacebook, loginWithGoogle, loginWithGithub } =
-        useContext(AuthContext);
+    const {
+        createUser,
+        updateUser,
+        loginWithFacebook,
+        loginWithGoogle,
+        loginWithGithub,
+    } = useContext(AuthContext);
 
     const handleSignUp = (data) => {
+        // Create User
         createUser(data.email, data.password)
             .then((result) => {
                 const user = result.user;
+                reset();
                 toast.success('User Created Successfully');
             })
             .catch((error) => {
-                console.error(error);
-                toast.error(error.message);
+                if (error.code === 'auth/email-already-in-use') {
+                    // Display a custom error message to the user
+                    toast.error('This User Already Exist');
+                } else {
+                    // Handle other Firebase authentication errors or generic error handling
+                    console.error(error);
+                }
             });
+
+        // Update UserName
+        const userInfo = {
+            displayName: data.name,
+        };
+        updateUser(userInfo);
     };
 
     // Facebook Login Function
@@ -108,9 +127,19 @@ const SignUp = () => {
                                     type='text'
                                     placeholder='Name'
                                     className='bg-gray-100 outline-none flex-1'
-                                    {...register('name')}
+                                    {...register('name', {
+                                        required: 'Please Enter Your Name !',
+                                    })}
                                 />
                             </div>
+                            {errors.name && (
+                                <p
+                                    role='alert'
+                                    className='text-error text-left font-medium pb-3 w-72'
+                                >
+                                    {errors.name?.message}
+                                </p>
+                            )}
                             {/* Email Field */}
                             <div className='bg-gray-100 w-72 p-2 flex items-center mb-3 rounded-sm'>
                                 <FaRegEnvelope className='text-gray-400 text-xl m-1 mr-2' />

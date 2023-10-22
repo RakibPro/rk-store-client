@@ -9,6 +9,7 @@ const InventoryCard = ({ product }) => {
 
     const [showFullDescription, setShowFullDescription] = useState(false);
     const shortDescription = description.substring(0, 110);
+    const shouldShowSeeMoreButton = description.length >= 110;
 
     const toggleDescription = () => {
         setShowFullDescription(!showFullDescription);
@@ -47,29 +48,35 @@ const InventoryCard = ({ product }) => {
                     <h2 className='card-title text-start'>{name}</h2>
                     {/* Product Description  */}
                     <div>
-                        {showFullDescription ? (
-                            <p className='font-medium text-start my-2'>
-                                {description}{' '}
-                                <button
-                                    onClick={toggleDescription}
-                                    className='text-red-500 hover:underline'
-                                >
-                                    {showFullDescription
-                                        ? 'See Less'
-                                        : 'See More'}
-                                </button>
-                            </p>
+                        {shouldShowSeeMoreButton ? (
+                            showFullDescription ? (
+                                <p className='font-medium text-start my-2'>
+                                    {description}{' '}
+                                    <button
+                                        onClick={toggleDescription}
+                                        className='text-red-500 hover:underline'
+                                    >
+                                        {showFullDescription
+                                            ? 'See Less'
+                                            : 'See More'}
+                                    </button>
+                                </p>
+                            ) : (
+                                <p className='font-medium text-start my-2'>
+                                    {shortDescription}...{' '}
+                                    <button
+                                        onClick={toggleDescription}
+                                        className='text-[#3bb77e] hover:underline'
+                                    >
+                                        {showFullDescription
+                                            ? 'See Less'
+                                            : 'See More'}
+                                    </button>
+                                </p>
+                            )
                         ) : (
                             <p className='font-medium text-start my-2'>
-                                {shortDescription}...{' '}
-                                <button
-                                    onClick={toggleDescription}
-                                    className='text-[#3bb77e] hover:underline'
-                                >
-                                    {showFullDescription
-                                        ? 'See Less'
-                                        : 'See More'}
-                                </button>
+                                {description}
                             </p>
                         )}
                     </div>

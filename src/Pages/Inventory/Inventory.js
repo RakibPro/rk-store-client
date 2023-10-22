@@ -8,9 +8,7 @@ const Inventories = () => {
         queryKey: ['products'],
         queryFn: async () => {
             try {
-                const res = await fetch(
-                    'https://rk-store-server.vercel.app/inventory'
-                );
+                const res = await fetch('http://localhost:5000/inventory');
                 const data = await res.json();
                 return data;
             } catch (error) {}
@@ -27,7 +25,7 @@ const Inventories = () => {
                 All Products
             </h1>
             <div className='grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-10 mt-5 mx-10'>
-                {products.map((product, i) => (
+                {products?.map((product, i) => (
                     <InventoryCard key={i} product={product}></InventoryCard>
                 ))}
             </div>

@@ -30,9 +30,7 @@ const Login = () => {
             .catch((error) => {
                 if (error.code === 'auth/invalid-login-credentials') {
                     // Display a custom error message to the user
-                    toast.error(
-                        'Invalid login credentials. Please check your email and password.'
-                    );
+                    toast.error('Please check your email and password.');
                 } else {
                     // Handle other Firebase authentication errors or generic error handling
                     console.error(error);
@@ -44,7 +42,6 @@ const Login = () => {
     const handleFacebookLogin = () => {
         loginWithFacebook()
             .then((result) => {
-                console.log(result);
                 // The signed-in user info.
                 const user = result.user;
                 navigate(from, { replace: true });

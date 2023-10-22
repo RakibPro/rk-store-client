@@ -49,6 +49,14 @@ function Navbar() {
                     <li>
                         <Link
                             className='hover:bg-transparent hover:text-[#3bb77e] transition duration-300'
+                            to='/myitems'
+                        >
+                            My Items
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            className='hover:bg-transparent hover:text-[#3bb77e] transition duration-300'
                             to='/addnewitem'
                         >
                             Add New Item
