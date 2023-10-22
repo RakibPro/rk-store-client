@@ -49,7 +49,7 @@ function Banner() {
                     viewport={{ once: true }}
                     className='max-w-3xl transition-all ease-out duration-500'
                 >
-                    <h1 className='mb-5 text-7xl font-bold tracking-wide '>
+                    <h1 className='mb-5 text-5xl lg:text-7xl font-bold tracking-wide'>
                         Organic Grocery
                     </h1>
                     <p className='mb-5 font-medium mx-10'>
