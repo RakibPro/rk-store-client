@@ -5,7 +5,6 @@ import Banner3 from '../../../Assets/Images/BannerImage/Banner3.jpg';
 import Banner4 from '../../../Assets/Images/BannerImage/Banner4.jpg';
 import Banner5 from '../../../Assets/Images/BannerImage/Banner5.jpg';
 import Banner6 from '../../../Assets/Images/BannerImage/Banner6.jpg';
-import PrimaryButton from '../../../Components/Buttons/PrimaryButton/PrimaryButton';
 import { motion } from 'framer-motion';
 
 function Banner() {
@@ -59,7 +58,22 @@ function Banner() {
                         locally whenever possible, ensuring you get the best of
                         your community's produce.
                     </p>
-                    <PrimaryButton>Explore</PrimaryButton>
+                    <a
+                        href='#inventory'
+                        onClick={(e) => {
+                            e.preventDefault();
+                            const inventorySection =
+                                document.getElementById('inventory');
+                            inventorySection.scrollIntoView({
+                                behavior: 'smooth',
+                            });
+                        }}
+                        className='btn text-white border-none tracking-widest 
+                        first-letter:font-bold bg-[#3bb77e] hover:bg-[#fdc040]
+                        hover:text-black transition-all duration-300'
+                    >
+                        Explore
+                    </a>
                 </motion.div>
             </div>
         </section>

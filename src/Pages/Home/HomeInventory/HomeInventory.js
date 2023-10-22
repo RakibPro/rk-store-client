@@ -23,8 +23,8 @@ const Inventories = () => {
         return <Loading />;
     }
     return (
-        <section className='text-center pb-10'>
-            <h1 className='text-5xl py-5 mt-10 font-bold text-[#253d4e]'>
+        <section id='inventory' className='text-center pb-10'>
+            <h1 className='text-5xl mt-14 font-bold text-[#253d4e]'>
                 Our Grocery
             </h1>
             <p className='py-6 mx-auto w-1/2 text-[#253d4e] font-medium'>
