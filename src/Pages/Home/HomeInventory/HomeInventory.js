@@ -27,7 +27,7 @@ const Inventories = () => {
             <h1 className='text-5xl mt-14 font-bold text-[#253d4e]'>
                 Our Grocery
             </h1>
-            <p className='py-6 mx-auto w-1/2 text-[#253d4e] font-medium'>
+            <p className='py-6 mx-auto w-[80%] lg:w-1/2 text-[#253d4e] font-medium'>
                 Explore fresh, flavorful groceries online. Shop top-quality
                 produce, pantry essentials, and more. Your go-to source for
                 convenient, tasty living.
