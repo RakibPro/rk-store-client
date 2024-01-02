@@ -10,6 +10,7 @@ import InventoryDetails from '../../Pages/Inventory/InventoryDetails';
 import ManageInventory from '../../Pages/ManageInventory/ManageInventory';
 import MyItems from '../../Pages/MyItems/MyItems';
 import AddNewItem from '../../Pages/AddNewItem/AddNewItem';
+import Blogs from '../../Pages/Blogs/Blogs';
 
 export const router = createBrowserRouter([
     {
@@ -68,6 +69,10 @@ export const router = createBrowserRouter([
                         <AddNewItem />
                     </PrivateRoute>
                 ),
+            },
+            {
+                path: '/blogs',
+                element: <Blogs />,
             },
         ],
     },

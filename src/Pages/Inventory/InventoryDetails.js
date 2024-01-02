@@ -89,7 +89,7 @@ const InventoryDetails = () => {
 
     return (
         <section>
-            <div className='flex flex-col lg:flex-row m-10'>
+            <div className='flex flex-col lg:flex-row m-10 overflow-hidden'>
                 <motion.img
                     initial={{
                         x: -200,

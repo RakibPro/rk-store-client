@@ -17,6 +17,7 @@ To visit my site [Click Here](https://rk-store-52c4c.web.app/).
 ### `What can you do :`
 
 -   On very top of my website it has a navbar with a button for login and logout
+-   On login page you can login with email and password or you can login by using facebook, google and github account
 -   There is a Banner section on home page below navbar
 -   On home page products are available on grocery section where you can find only 6 product
 -   There is a download app section on home page below grocery section
@@ -30,6 +31,7 @@ To visit my site [Click Here](https://rk-store-52c4c.web.app/).
 -   On my items page you can find all of your product and you can delete products from here also
 -   On add items page you will find a from for add product
 -   On the very down there is footer section
+-   If you put any wrong path or if there is any problem on the website you will redirect to the 404 page
 
 ### `Technology Used On My Website :`
 
