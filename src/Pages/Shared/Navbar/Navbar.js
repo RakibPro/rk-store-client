@@ -64,14 +64,6 @@ function Navbar() {
                     </li>
                 </>
             )}
-            <li>
-                <Link
-                    className='hover:bg-transparent hover:text-[#3bb77e] transition duration-300'
-                    to='/blogs'
-                >
-                    Blogs
-                </Link>
-            </li>
         </>
     );
     return (
